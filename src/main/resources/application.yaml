@@ -14,29 +14,10 @@ spring:
           predicates:
             - Path=/oauth2/**
 
-        - id: oauth2-login
-          uri: http://localhost:9999
-          predicates:
-            - Path=/login/**
-
-        - id: oauth2-error
-          uri: http://localhost:9999
-          predicates:
-            - Path=/error/**
-
-        # todo - just a testing route, remove
-        - id: host_route_200
-          uri: http://httpstat.us
-          predicates:
-            - Host=i.feel.lucky:8080
-            - Path=/headerrouting/**
-          filters:
-            - SetPath=/200
-
         - id: user-service
           uri: http://localhost:8081
           predicates:
-            #            - Path=/api/users/**
+            - Path=/api/users/**
             - Path=/api/auth/**
 
         - id: analytics-service
