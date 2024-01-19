@@ -60,6 +60,10 @@ spring:
         jwt:
           issuer-uri: http://${app.auth-server}:9999
 
+  threads:
+    virtual:
+      enabled: true
+
 management:
   endpoint:
     gateway:

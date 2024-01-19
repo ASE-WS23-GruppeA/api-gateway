@@ -1,1 +1,1 @@
-rootProject.name = "workout-tracker-api-gateway"
+rootProject.name = "api-gateway"
