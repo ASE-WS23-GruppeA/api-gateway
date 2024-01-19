@@ -2,35 +2,44 @@ server.port: 8443
 
 spring.application.name: api-gateway
 
-app:
-  auth-server: localhost
+api:
+  auth-server:
+    base-url: http://localhost:9999
+  user-service:
+    base-url: http://localhost:8081
+  analytics-service:
+    base-url: http://localhost:8082
+  workout-service:
+    base-url: http://localhost:8083
+  exercise-service:
+    base-url: http://localhost:8084
 
 spring:
   cloud:
     gateway:
       routes:
         - id: oauth2-server
-          uri: http://localhost:9999
+          uri: ${api.auth-server.base-url}
           predicates:
             - Path=/oauth2/**
 
         - id: user-service
-          uri: http://localhost:8081
+          uri: ${api.user-service.base-url}
           predicates:
             - Path=/api/users/**,/api/auth/**
 
         - id: analytics-service
-          uri: http://localhost:8082
+          uri: ${api.analytics-service.base-url}
           predicates:
             - Path=/api/analytics/**
 
         - id: workout-service
-          uri: http://localhost:8083
+          uri: ${api.workout-service.base-url}
           predicates:
             - Path=/api/workouts/**
 
         - id: exercise-service
-          uri: http://localhost:8084
+          uri: ${api.exercise-service.base-url}
           predicates:
             - Path=/api/exercises/**
 
@@ -38,7 +47,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://${app.auth-server}:9999
+          issuer-uri: ${api.auth-server.base-url}
 
   threads:
     virtual:
@@ -65,5 +74,14 @@ logging:
 ---
 spring.config.activate.on-profile: docker
 
-app:
-  auth-server: auth-server
+api:
+  auth-server:
+    base-url: http://auth-server:9999
+  user-service:
+    base-url: http://user-service:8080
+  analytics-service:
+    base-url: http://analytics-service:8080
+  workout-service:
+    base-url: http://workout-service:8080
+  exercise-service:
+    base-url: http://exercise-service:8080
