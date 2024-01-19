@@ -66,4 +66,4 @@ logging:
 spring.config.activate.on-profile: docker
 
 app:
-  auth-server: authorization-server
+  auth-server: auth-server
