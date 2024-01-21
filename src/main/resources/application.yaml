@@ -31,17 +31,17 @@ spring:
         - id: analytics-service
           uri: ${api.analytics-service.base-url}
           predicates:
-            - Path=/api/analytics/**
+            - Path=/analytics/**
 
         - id: workout-service
           uri: ${api.workout-service.base-url}
           predicates:
-            - Path=/api/workouts/**
+            - Path=/workouts/**
 
         - id: exercise-service
           uri: ${api.exercise-service.base-url}
           predicates:
-            - Path=/api/exercises/**
+            - Path=/exercises/**
 
   security:
     oauth2:
@@ -67,9 +67,9 @@ management:
 logging:
   level:
     root: INFO
-    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
-    org.springframework.cloud.gateway: TRACE
-    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
+#    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
+#    org.springframework.cloud.gateway: TRACE
+#    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
 
 ---
 spring.config.activate.on-profile: docker
