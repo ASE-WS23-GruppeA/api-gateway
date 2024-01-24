@@ -10,9 +10,9 @@ api:
   analytics-service:
     base-url: http://localhost:8082
   workout-service:
-    base-url: http://localhost:8083
+    base-url: http://localhost:3000
   exercise-service:
-    base-url: http://localhost:8084
+    base-url: http://localhost:3000
 
 spring:
   cloud:
@@ -82,6 +82,6 @@ api:
   analytics-service:
     base-url: http://analytics-service:8080
   workout-service:
-    base-url: http://workout-service:8080
+    base-url: http://workout-service:3000
   exercise-service:
-    base-url: http://exercise-service:8080
+    base-url: http://exercise-service:3000
